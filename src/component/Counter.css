@@ -1,0 +1,47 @@
+
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.btns{
+    display: flex;
+    gap: 23px;
+    margin-top: 2rem;
+}
+button{
+    color: white;
+    outline: none;
+    border: none;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+}
+.btn1{
+    background: blue;
+}
+
+.btn2{
+    background: rgb(255, 238, 0);
+    color: black;
+}
+
+.btn3{
+    background: red;
+}
+
+.item{
+    border: 1px solid blue;
+   padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1{
+    text-align: center;
+    opacity: 0.5;
+    border-bottom: 1px solid black;
+}
