@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 // create a reducer function and pass it to the store
 
 // reducer takes two params state and action
@@ -26,13 +26,31 @@ const countReducer=(state=5, action)=>{
         return state=0;
     }
 
-    return state;
+    // get payload from the dispatch 
+
+    if(action.type==="ADD_NUMBER") return state + action.payload;
 
 
 }
+// create an auth reducer
 
+const authReducer=(state=false, action)=>{
+
+    
+    if(action.type==="TOGGLE_AUTH"){
+        return state=!state;
+    }
+
+}
+
+// we can not pass more than one reducer in a store, we need to combine it using combine reducer before adding or passing into the store
+
+const reducers=combineReducers({
+    count:countReducer,
+    isLoggedIn:authReducer
+})
 
 // create a store
 
-export const store=createStore(countReducer);
+export const store=createStore(reducers);
 

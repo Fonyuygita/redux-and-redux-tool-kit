@@ -10,10 +10,19 @@
 
 }
 
+.log{
+    margin-top: 2rem;
+    padding: 12px 23px;
+    background-color: green;
+    color: white;
+}
+
 .btns{
     display: flex;
     gap: 23px;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 23px;
 }
 button{
     color: white;

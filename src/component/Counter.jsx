@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const Counter = () => {
 
-const count=useSelector(state=>state);
+const count=useSelector(state=>state.count);
 
 // useSelector is use to select state from the store
 
@@ -54,10 +54,25 @@ const handleReset=()=>{
   })
 }
 
+// create our handleAddNumber function
+const handleAddNumber=(amount)=>{
+  dispatch({
+    type:"ADD_NUMBER",
+    // send a payload to our reducer function
+
+    payload:amount
+
+  })
+}
+
   return (
     <div className='container'>
     <h1>React Redux Tutorial</h1>
     <div className='box'>
+    <div className='items'>
+    <button className=' log'>Logout</button>
+    </div>
+
     <div className="count">
     <h1 className='item'>{count}</h1>
     </div>
@@ -78,6 +93,10 @@ const handleReset=()=>{
 
     <div className='items'>
     <button className='btn3'  onClick={handleReset}>Reset</button>
+    </div>
+
+    <div className='items'>
+    <button className='btn2'  onClick={()=>handleAddNumber(5)}>Add 5</button>
     </div>
     
     </div>
