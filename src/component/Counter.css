@@ -5,6 +5,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: #fff;
+    box-shadow: 12px 12px 12px #333;
 
 }
 
