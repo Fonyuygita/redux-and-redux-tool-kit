@@ -3,20 +3,18 @@
 import './Counter.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {handleAdd, handleSubtract, handleAddNumber, handleMultiply, handleAuth, handleReset} from "../store/actions/action.js"
+import {ADD, SUBTRACT, ADD_NUMBER, MULTIPLY, RESET} from "./../store/slice/counterSlice"
 
 const Counter = () => {
 
-  const count = useSelector((state) => state.count);
-  const isLoggedIn = useSelector((state) => state.isLoggedIn);
+  const count = useSelector((state) => state.counter.count);
+  const isLoggedIn = useSelector((state) => state.authSlice.isLoggedIn);
 
-  // const isLoggedIn = useSelector((state) => state.isLoggedIn);
-
-
-  // const isLoggedIn = useSelector((state) => state.isLoggedIn)
   // useSelector is use to select state from the store
 
   // state as an argument which returns a state
   console.log(count);
+  console.log(isLoggedIn);
   // console.log(isLoggedIn)
 
   // use dispatch to perform an action
