@@ -1,107 +1,67 @@
-import React, { useState } from 'react'
+
 
 import './Counter.css'
 import { useDispatch, useSelector } from 'react-redux'
+import {handleAdd, handleSubtract, handleAddNumber, handleMultiply, handleAuth, handleReset} from "../store/actions/action.js"
 
 const Counter = () => {
 
-const count=useSelector(state=>state.count);
+  const count = useSelector((state) => state.count);
+  const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
-// useSelector is use to select state from the store
-
-// state as an argument which returns a state
-console.log(count);
-
-// use dispatch to perform an action
-
-const dispatch=useDispatch();
+  // const isLoggedIn = useSelector((state) => state.isLoggedIn);
 
 
+  // const isLoggedIn = useSelector((state) => state.isLoggedIn)
+  // useSelector is use to select state from the store
 
-const handleAdd=()=>{
-  // setCount(count+2)
+  // state as an argument which returns a state
+  console.log(count);
+  // console.log(isLoggedIn)
 
   // use dispatch to perform an action
 
-  dispatch({
-    type:"ADD"
-  })
-  
-}
+  const dispatch = useDispatch();
 
 
-const handleSubtract=()=>{
-  // setCount(count - 1)
-  dispatch({
-    type:"SUBTRACT"
-  })
-  
-}
-
-const handleMultiply=()=>{
-  // setCount(count *2)
-
-  dispatch({
-    type:"MULTIPLY"
-  })
-}
-
-
-const handleReset=()=>{
-  // setCount(0)
-  dispatch({
-    type:"RESET"
-  })
-}
-
-// create our handleAddNumber function
-const handleAddNumber=(amount)=>{
-  dispatch({
-    type:"ADD_NUMBER",
-    // send a payload to our reducer function
-
-    payload:amount
-
-  })
-}
 
   return (
     <div className='container'>
-    <h1>React Redux Tutorial</h1>
-    <div className='box'>
-    <div className='items'>
-    <button className=' log'>Logout</button>
-    </div>
+      <h1>React Redux Tutorial</h1>
+      <div className='box'>
+        <div className='items'>
+          <button className=' log' onClick={()=>dispatch(handleAuth)}>Logout</button>
+        </div>
 
-    <div className="count">
-    <h1 className='item'>{count}</h1>
-    </div>
+        <div className="count">
+          <h1 className='item'>{count}</h1>
+        </div>
 
-    {/**our btns goes here*/}
+        {/**our btns goes here*/}
 
-    <div className="btns">
+        <div className="btns">
 
-    <div className='items'>
-    <button className='btn1' onClick={handleAdd}>Add</button>
-    </div>
-    <div className='items'>
-    <button className='btn2'  onClick={handleSubtract}>Subtract</button>
-    </div>
-    <div className='items'>
-    <button className='btn3'  onClick={handleMultiply}>Multiply</button>
-    </div>
+          <div className='items'>
+            <button className='btn1' onClick={()=>dispatch(handleAdd)}>Add</button>
+          </div>
+          <div className='items'>
+            <button className='btn2' onClick={()=>dispatch(handleSubtract)}>Subtract</button>
+          </div>
+          <div className='items'>
+            <button className='btn3' onClick={()=>dispatch(handleMultiply)}>Multiply</button>
+          </div>
 
-    <div className='items'>
-    <button className='btn3'  onClick={handleReset}>Reset</button>
-    </div>
+          <div className='items'>
+            <button className='btn3' onClick={()=>dispatch(handleReset)}>Reset</button>
+          </div>
 
-    <div className='items'>
-    <button className='btn2'  onClick={()=>handleAddNumber(5)}>Add 5</button>
-    </div>
-    
-    </div>
-    </div>
-    
+          <div className='items'>
+            <button className='btn2' onClick={() => dispatch(handleAddNumber(5))}>Add 5</button>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   )
 }
